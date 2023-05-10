@@ -1,6 +1,6 @@
 # React.js Web Frontend For RpgManager Project
 
-This is a fully functional React.js web frontend for RpgManager, a self-management app that combines game and organization. The purpose of this project is to create a single application that combines self-management tools with gaming-like features to provide a comfortable and rewarding experience in managing your life.
+This is a fully functional React.js + Vite web frontend for RpgManager, a self-management app that combines game and organization. The purpose of this project is to create a single application that combines self-management tools with gaming-like features to provide a comfortable and rewarding experience in managing your life.
 
 See RPGManager API <a href="https://github.com/Definitely-Human/rpgmanager-api">here</a>.
 

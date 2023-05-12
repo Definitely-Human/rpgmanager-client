@@ -1,8 +1,30 @@
 # Items that don't need to be in a Docker image.
 # Anything not used by the build system should go here.
-Dockerfile
-.dockerignore
-.gitignore
+**/.idea
+**/.coverage*
+**/.celerybeat.pid*
+**/.classpath
+**/.dockerignore
+**/.env
+**/.git
+**/.gitignore
+**/.project
+**/.settings
+**/.toolstarget
+**/.vs
+**/.vscode
+**/*.*proj.user
+**/*.dbmdl
+**/*.jfm
+**/azds.yaml
+**/charts
+**/docker-compose*
+**/Dockerfile*
+**/node_modules
+**/npm-debug.log
+**/obj
+**/secrets.dev.yaml
+**/values.dev.yaml
 README.md
 
 # Artifacts that will be built during image creation.

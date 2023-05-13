@@ -16,8 +16,8 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v2
             - name: Unit Test
-              run: docker-compose run --rm app sh -c "yarn run test"
+              run: docker-compose run --rm client sh -c "yarn run test"
             - name: E2E Test
               run: docker run -it -v $PWD/react-app:/e2e -w /e2e cypress/included:12.12.0
             - name: Lint
-              run: docker-compose run --rm app sh -c "yarn run lint"
+              run: docker-compose run --rm client sh -c "yarn run lint"

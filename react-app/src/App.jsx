@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+// import { useState, useEffect } from "react";
+// import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Error, Home, Play, Profile } from "./pages";
 

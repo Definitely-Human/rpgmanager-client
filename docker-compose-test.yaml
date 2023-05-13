@@ -1,0 +1,27 @@
+# e2e/docker-compose.yml from repo
+# https://github.com/bahmutov/cypress-open-from-docker-compose
+version: "3.9"
+services:
+    # this is the web application we are going to test
+    client:
+        extends:
+            file: docker-compose.yaml
+            service: client
+    # Cypress container
+    cypress:
+        # the Docker image to use from https://github.com/cypress-io/cypress-docker-images
+        image: "cypress/included:12.12.0"
+        depends_on:
+            - client
+        environment:
+            # pass base url to test pointing at the web application
+            - CYPRESS_baseUrl=http://localhost:3000/
+        # share the current folder as volume to avoid copying
+        working_dir: /e2e
+        volumes:
+            - ./react-app/:/e2e
+        networks:
+            - sharedNet
+
+networks:
+    sharedNet:

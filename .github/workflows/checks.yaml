@@ -21,7 +21,7 @@ jobs:
               uses: cypress-io/github-action@v5
               with:
                   working-directory: ./react-app
-                  build: npm run build
-                  start: npm start
+                  build: yarn run build
+                  start: yarn run preview
             - name: Lint
               run: docker-compose run --rm client sh -c "yarn run lint"

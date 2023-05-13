@@ -4,18 +4,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Error, Home, Play, Profile } from "./pages";
 
 function App() {
-    const [count, setCount] = useState(0);
-    const token = "00d96b8d7c2a19530b776efe546c55c11eb4cbde";
-    const title = "react";
-    useEffect(() => {
-        axios
-            .get("http://localhost:8000/api/manager/tasks", {
-                headers: { Authorization: `Token ${token}` },
-            })
-            .then((res) => {
-                console.log(res);
-            });
-    }, []);
+    // const token = "00d96b8d7c2a19530b776efe546c55c11eb4cbde";
+    // const title = "react";
+    // useEffect(() => {
+    //     axios
+    //         .get("http://localhost:8000/api/manager/tasks", {
+    //             headers: { Authorization: `Token ${token}` },
+    //         })
+    //         .then((res) => {
+    //             console.log(res);
+    //         });
+    // }, []);
     return (
         <BrowserRouter>
             <Routes>

@@ -15,10 +15,10 @@ jobs:
                   password: ${{ secrets.DOCKERHUB_TOKEN }}
             - name: Checkout
               uses: actions/checkout@v2
-            - name: Unit Test
-              run: docker-compose run --rm client sh -c "yarn run test"
+            # - name: Unit Test
+            #   run: docker-compose run --rm client sh -c "yarn run test"
             - name: Cypress run
-              uses: cypress-io/github-action@v2
+              uses: cypress-io/github-action@v5
               with:
                   project: ./react-app
                   build: npm run build

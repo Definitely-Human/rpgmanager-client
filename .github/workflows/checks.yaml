@@ -21,7 +21,7 @@ jobs:
               uses: cypress-io/github-action@v5
               with:
                   build: sudo yarn run build
-                  start: sudo yarn run preview -- --port 8000
+                  start: sudo yarn run preview -- --port 3000
                   browser: chrome
                   working-directory: ./react-app
             - name: Lint

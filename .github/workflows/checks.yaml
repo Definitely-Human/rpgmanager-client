@@ -20,8 +20,9 @@ jobs:
             - name: Cypress run
               uses: cypress-io/github-action@v5
               with:
-                  working-directory: ./react-app
                   build: sudo yarn run build
                   start: sudo yarn run preview
+                  browser: chrome
+                  working-directory: ./react-app
             - name: Lint
               run: docker-compose run --rm client sh -c "yarn run lint"

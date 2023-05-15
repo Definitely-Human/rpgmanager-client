@@ -15,8 +15,6 @@ jobs:
                   password: ${{ secrets.DOCKERHUB_TOKEN }}
             - name: Checkout
               uses: actions/checkout@v3
-            - name: Unit Test
-              run: docker-compose run --rm client sh -c "yarn run test"
             - name: Cypress run
               uses: cypress-io/github-action@v5
               with:
@@ -24,5 +22,7 @@ jobs:
                   start: sudo yarn run preview -- --port 3000
                   browser: chrome
                   working-directory: ./react-app
+            - name: Unit Test
+              run: docker-compose run --rm client sh -c "yarn run test"
             - name: Lint
               run: docker-compose run --rm client sh -c "yarn run lint"

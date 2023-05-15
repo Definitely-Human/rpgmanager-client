@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import { Logo, FormRow } from "../components";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, loginUser, registerUser } from "../features/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
     username: "",
@@ -10,6 +14,9 @@ const initialState = {
 
 const Register = () => {
     const [values, setValues] = useState(initialState);
+    const { user, isLoading } = useSelector((store) => store.user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -21,13 +28,27 @@ const Register = () => {
         e.preventDefault();
         const { username, email, password, isMember } = values;
         if (!email || !password || (!isMember && !username)) {
-            console.log("Please fill out all fields.");
+            toast.error("Please fill out all fields.");
+            return;
         }
+        if (isMember) {
+            dispatch(loginUser({ username: email, password: password }));
+            return;
+        }
+        dispatch(registerUser({ username, email, password }));
     };
 
     const toggleMember = () => {
         setValues({ ...values, isMember: !values.isMember });
     };
+
+    useEffect(() => {
+        if (user) {
+            setTimeout(() => {
+                navigate("/play");
+            }, 2000);
+        }
+    }, [user]);
 
     return (
         <main className="font-semibold h-screen grid items-center dark:bg-gray-blue-900 text-slate-100 min-h-[600px]">
@@ -66,9 +87,10 @@ const Register = () => {
                 />
                 <button
                     type="submit"
-                    className="bg-secondary rounded py-2 px-8 mt-6 place-self-center hover:bg-secondary-600 border-green-900 border-x-2"
+                    disabled={isLoading}
+                    className="bg-secondary rounded py-2 px-8 mt-6 place-self-center hover:bg-secondary-600 border-green-900 border-x-2 disabled:bg-slate-500"
                 >
-                    Submit
+                    {isLoading ? "Loading..." : "Submit"}
                 </button>
                 <p className="place-self-center mt-2">
                     {values.isMember

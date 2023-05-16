@@ -41,7 +41,6 @@ export const getUser = createAsyncThunk(
     "user/getUser",
     async (token, thunkAPI) => {
         try {
-            console.log("Getting user...");
             const resp = await customFetch.get("/user/me/");
             return resp.data;
         } catch (error) {
@@ -75,7 +74,6 @@ const userSlice = createSlice({
             .addCase(loginUser.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 toast.success("Login successful.");
-                console.log("setting token");
                 addUserToLocalStorage({ token: payload.token });
                 state.user = {
                     token: payload.token,

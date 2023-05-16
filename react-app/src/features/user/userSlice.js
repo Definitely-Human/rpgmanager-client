@@ -4,9 +4,7 @@ import customFetch from "../../utils/axios";
 import {
     getUserFromLocalStorage,
     addUserToLocalStorage,
-    removeUserFromLocalStorage,
 } from "../../utils/localStorage";
-import { useDispatch } from "react-redux";
 
 const initialState = {
     isLoading: false,
@@ -58,7 +56,7 @@ const userSlice = createSlice({
             .addCase(registerUser.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(registerUser.fulfilled, (state, { payload }) => {
+            .addCase(registerUser.fulfilled, (state) => {
                 state.isLoading = false;
                 toast.success("Registration successful.");
             })

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Logo, FormRow } from "../components";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, loginUser, registerUser } from "../features/user/userSlice";
+import { loginUser, registerUser } from "../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const initialState = {
@@ -48,6 +48,7 @@ const Register = () => {
                 navigate("/play");
             }, 2000);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
     return (

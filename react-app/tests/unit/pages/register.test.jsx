@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import Register from "../../../src/pages/Register";
 import { Provider } from "react-redux";
 import { store } from "../../../src/store";
+import { vi } from "vitest";
 
 vi.mock("react-router-dom", () => ({
     ...vi.importActual("react-router-dom"),

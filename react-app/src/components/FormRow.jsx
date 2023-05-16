@@ -1,11 +1,13 @@
-const FormRow = ({ type, name, value, handleChange, labeText }) => {
+import PropTypes from "prop-types";
+
+const FormRow = ({ type, name, value, handleChange, labelText }) => {
     return (
         <div>
             <label
                 htmlFor={name}
                 className="cursor-pointer block mb-2 text-xl capitalize"
             >
-                {name}
+                {labelText || name}
             </label>
             <input
                 type={type}
@@ -18,4 +20,13 @@ const FormRow = ({ type, name, value, handleChange, labeText }) => {
         </div>
     );
 };
+
+FormRow.propTypes = {
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    handleChange: PropTypes.func,
+    labelText: PropTypes.string,
+};
+
 export default FormRow;

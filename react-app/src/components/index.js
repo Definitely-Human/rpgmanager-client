@@ -9,6 +9,7 @@ import RemindersList from "./RemindersList";
 import ModuleBlock from "./ModuleBlock";
 import CharacterStats from "./CharacterStats";
 import AddCategoryModal from "./AddCategoryModal";
+import FormRowSelect from "./FormRowSelect";
 
 export {
     CategoriesList,
@@ -22,4 +23,5 @@ export {
     ModuleBlock,
     CharacterStats,
     AddCategoryModal,
+    FormRowSelect,
 };

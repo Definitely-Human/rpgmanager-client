@@ -11,6 +11,8 @@ import CharacterStats from "./CharacterStats";
 import AddCategoryModal from "./AddCategoryModal";
 import FormRowSelect from "./FormRowSelect";
 import CategoryItem from "./CategoryItem";
+import ItemList from "./ItemList";
+import ItemListRow from "./ItemListRow";
 
 export {
     CategoriesList,
@@ -26,4 +28,6 @@ export {
     AddCategoryModal,
     FormRowSelect,
     CategoryItem,
+    ItemList,
+    ItemListRow,
 };

@@ -6,6 +6,7 @@ import {
     RemindersList,
     TopBar,
 } from "../components";
+import ItemList from "../components/ItemList";
 
 const Play = () => {
     return (
@@ -24,7 +25,11 @@ const Play = () => {
                         <RemindersList />
                     </ModuleBlock>
                 </div>
-                <div className="bg-gray-blue-900"></div>
+                <div className="bg-gray-blue-900">
+                    <ModuleBlock>
+                        <ItemList />
+                    </ModuleBlock>
+                </div>
                 <div className="bg-gray-blue-800 border-l-2 border-gray-900">
                     <ModuleBlock>
                         <CharacterStats />

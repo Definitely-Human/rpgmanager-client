@@ -13,7 +13,7 @@ const Play = () => {
             <TopBar />
 
             <main className="grid grid-cols-[1fr_3fr_1fr]">
-                <div className="bg-gray-blue-800 border-r-2 border-gray-900 grid grid-rows-[1fr_3fr_1fr]">
+                <div className="bg-gray-blue-800 border-r-2 border-gray-900 grid grid-rows-[1fr_3fr_1fr] min-h-0 min-w-0">
                     <ModuleBlock>
                         <FilteringOptions />
                     </ModuleBlock>

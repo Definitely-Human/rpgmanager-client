@@ -10,6 +10,7 @@ import ModuleBlock from "./ModuleBlock";
 import CharacterStats from "./CharacterStats";
 import AddCategoryModal from "./AddCategoryModal";
 import FormRowSelect from "./FormRowSelect";
+import CategoryItem from "./CategoryItem";
 
 export {
     CategoriesList,
@@ -24,4 +25,5 @@ export {
     CharacterStats,
     AddCategoryModal,
     FormRowSelect,
+    CategoryItem,
 };

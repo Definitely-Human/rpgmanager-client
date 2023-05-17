@@ -13,7 +13,6 @@ export const getAllCategories = createAsyncThunk(
         let url = "/manager/categories/";
         try {
             const resp = await customFetch.get(url);
-            console.log(resp.data);
             return resp.data;
         } catch (error) {
             return thunkApi.rejectWithValue(error.response.data);

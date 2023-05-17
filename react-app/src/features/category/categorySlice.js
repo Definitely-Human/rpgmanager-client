@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import customFetch from "../../utils/axios";
+import { getAllCategories } from "../allCategories/allCategoriesSlice";
 
 const initialState = {
     categoryId: "",
@@ -14,11 +15,14 @@ export const createCategory = createAsyncThunk(
     "category/createCategory",
     async (category, thunkAPI) => {
         try {
-            const response = customFetch.post("manager/categories/", category);
+            const response = await customFetch.post(
+                "manager/categories/",
+                category
+            );
             thunkAPI.dispatch(clearValues());
+            thunkAPI.dispatch(getAllCategories());
             return response.data;
         } catch (error) {
-            console.log("errrosdlfjsklfj");
             thunkAPI.rejectWithValue(error.response.data);
         }
     }

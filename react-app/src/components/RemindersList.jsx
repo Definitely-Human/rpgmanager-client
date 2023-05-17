@@ -1,7 +1,7 @@
 const RemindersList = () => {
     return (
         <div>
-            <h3>Reminders</h3>
+            <h3>Reminders are currently in development...</h3>
         </div>
     );
 };

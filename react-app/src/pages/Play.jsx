@@ -15,13 +15,13 @@ const Play = () => {
 
             <main className="grid grid-cols-[1fr_3fr_1fr]">
                 <div className="bg-gray-blue-800 border-r-2 border-gray-900 grid grid-rows-[1fr_3fr_1fr] min-h-0 min-w-0">
-                    <ModuleBlock>
+                    <ModuleBlock name="Filtering options">
                         <FilteringOptions />
                     </ModuleBlock>
-                    <ModuleBlock>
+                    <ModuleBlock name="Categories">
                         <CategoriesList />
                     </ModuleBlock>
-                    <ModuleBlock>
+                    <ModuleBlock name="Reminders">
                         <RemindersList />
                     </ModuleBlock>
                 </div>
@@ -31,7 +31,7 @@ const Play = () => {
                     </ModuleBlock>
                 </div>
                 <div className="bg-gray-blue-800 border-l-2 border-gray-900">
-                    <ModuleBlock>
+                    <ModuleBlock name="Character">
                         <CharacterStats />
                     </ModuleBlock>
                 </div>

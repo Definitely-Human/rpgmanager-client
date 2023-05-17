@@ -26,7 +26,6 @@ const CategoriesList = () => {
     return (
         <>
             {isOpen && <AddCategoryModal toggleIsOpen={toggleIsOpen} />}
-            <h3 className="text-3xl text-center mb-3">Categories</h3>
             <div className="flex justify-end">
                 <button
                     className="text-2xl px-3 py-1 bg-gray-blue-900 border-2 border-gray-900 rounded-lg "

@@ -1,11 +1,20 @@
 import { expect, afterEach } from "vitest";
 import { cleanup } from "@testing-library/react";
 import matchers from "@testing-library/jest-dom/matchers";
+// src/setupTests.js
+import { server } from "./mocks/server.js";
+// Establish API mocking before all tests.
+beforeAll(() => server.listen());
 
-// extends Vitest's expect method with methods from react-testing-library
-expect.extend(matchers);
-
+// Reset any request handlers that we may add during the tests,
+// so they don't affect other tests.
 // runs a cleanup after each test case (e.g. clearing jsdom)
 afterEach(() => {
     cleanup();
+    server.resetHandlers();
 });
+
+// Clean up after the tests are finished.
+afterAll(() => server.close());
+// extends Vitest's expect method with methods from react-testing-library
+expect.extend(matchers);

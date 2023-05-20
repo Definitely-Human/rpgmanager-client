@@ -15,15 +15,18 @@ const UserToolbar = () => {
     if (isLoading) return <h2 className="text-2xl">Loading...</h2>;
     return (
         <div className="flex items-center">
-            Hello, {user.username}
+            <h5>Hello, {user?.username}</h5>
             <img
                 src={charIcon}
                 className="w-12 rounded-full border-2 border-gray-900 mx-2 "
                 alt="profile image"
             />
-            <div type="button" className="text-3xl relative inline-block group">
+            <nav className="text-3xl relative inline-block group">
                 <FiChevronDown />
-                <ul className="hidden hover:block group-hover:block w-48 bg-transparent pt-14 absolute z-10 right-0 top-[-10px]  text-xl">
+                <menu
+                    role="menu"
+                    className="hidden hover:block group-hover:block w-48 bg-transparent pt-14 absolute z-10 right-0 top-[-10px]  text-xl"
+                >
                     <li className="bg-gray-blue-900 hover:bg-gray-blue-950">
                         <button
                             type="button"
@@ -46,8 +49,8 @@ const UserToolbar = () => {
                             Logout
                         </button>
                     </li>
-                </ul>
-            </div>
+                </menu>
+            </nav>
         </div>
     );
 };

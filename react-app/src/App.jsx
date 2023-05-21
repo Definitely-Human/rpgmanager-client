@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Error, Home, Play, Profile, Register } from "./pages";
+import { Error, Home, Play, Profile, Register, ProtectedRoute } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -9,8 +9,23 @@ function App() {
             <Routes>
                 <Route path="/">
                     <Route index element={<Home />} />
-                    <Route path="play" element={<Play />} />
-                    <Route path="profile" element={<Profile />} />
+
+                    <Route
+                        path="play"
+                        element={
+                            <ProtectedRoute>
+                                <Play />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="profile"
+                        element={
+                            <ProtectedRoute>
+                                <Profile />
+                            </ProtectedRoute>
+                        }
+                    />
                     <Route path="auth" element={<Register />} />
                     <Route path="*" element={<Error />} />
                 </Route>

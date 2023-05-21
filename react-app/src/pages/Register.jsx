@@ -44,9 +44,7 @@ const Register = () => {
 
     useEffect(() => {
         if (user) {
-            setTimeout(() => {
-                navigate("/play");
-            }, 2000);
+            navigate("/play");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);

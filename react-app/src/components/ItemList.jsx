@@ -9,7 +9,7 @@ const ItemList = () => {
 
     useEffect(() => {
         dispatch(getAllTasks());
-    }, []);
+    }, [dispatch]);
     if (isLoading) {
         return <h3 className="text-xl">Loading...</h3>;
     }

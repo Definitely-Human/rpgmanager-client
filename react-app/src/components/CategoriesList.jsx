@@ -17,7 +17,7 @@ const CategoriesList = () => {
 
     useEffect(() => {
         dispatch(getAllCategories());
-    }, []);
+    }, [dispatch]);
 
     if (isLoading) {
         return <h3 className="text-xl">Loading...</h3>;

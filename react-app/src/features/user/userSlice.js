@@ -80,9 +80,6 @@ const userSlice = createSlice({
                 state.isLoading = false;
                 addUserToLocalStorage({ token: payload.token });
                 toast.success("Login successful.");
-                state.user = {
-                    token: payload.token,
-                };
                 window.location.reload(false);
             })
             .addCase(loginUser.rejected, (state, { payload }) => {
@@ -95,7 +92,7 @@ const userSlice = createSlice({
             })
             .addCase(getUser.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
-                state.user = { ...payload, token: state.token };
+                state.user = { ...payload };
             })
             .addCase(getUser.rejected, (state, { payload }) => {
                 state.isLoading = false;

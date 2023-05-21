@@ -4,7 +4,7 @@ const FilteringOptions = () => {
     return (
         <div className="grid grid-cols-2 grid-rows-4">
             <button className="flex items-center ">
-                <ImCheckboxUnchecked />
+                <ImCheckboxChecked />
                 <span className="ml-2"></span>Tasks
             </button>
             <button className="flex items-center ">

@@ -3,7 +3,7 @@ import charIcon from "../assets/icons/swordsman.png";
 import widthStrings from "../utils/widthStrings";
 
 const CharacterStats = () => {
-    const [percentage, setPercentage] = useState(0);
+    const [percentage, setPercentage] = useState(0); // eslint-disable-line no-unused-vars
     const xp = 200;
     return (
         <div>

@@ -1,6 +1,7 @@
-import { render, screen, debug, queryByRole } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import TopBar from "../../../src/components/TopBar";
-import { renderWithProviders } from "../../test-utils";
+import { renderWithProviders, setupStoreUser } from "../../test-utils";
+import { vi } from "vitest";
 
 vi.mock("react-router-dom", () => ({
     ...vi.importActual("react-router-dom"),
@@ -11,7 +12,7 @@ const actionMenuListSelector = ["menu"];
 
 describe("TopBar", () => {
     it("renders correctly", () => {
-        renderWithProviders(<TopBar />);
+        renderWithProviders(<TopBar />, { store: setupStoreUser() });
 
         const titleElement = screen.getByRole("heading", {
             name: "RPG Manager",
@@ -26,7 +27,7 @@ describe("TopBar", () => {
     });
 
     it("displays username when loaded", async () => {
-        renderWithProviders(<TopBar />);
+        renderWithProviders(<TopBar />, { store: setupStoreUser() });
 
         const userName = await screen.findByRole("heading", {
             name: /hello, test/i,
@@ -35,7 +36,7 @@ describe("TopBar", () => {
     });
 
     it("not displays user toolbar menu when rendered and user received", async () => {
-        renderWithProviders(<TopBar />);
+        renderWithProviders(<TopBar />, { store: setupStoreUser() });
 
         await screen.findByRole("heading", {
             name: /hello, test/i,

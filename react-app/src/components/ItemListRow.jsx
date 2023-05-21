@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const ItemListRow = ({ item }) => {
     const dateOptions = {
         weekday: "short",
@@ -22,4 +24,9 @@ const ItemListRow = ({ item }) => {
         </tr>
     );
 };
+
+ItemListRow.propTypes = {
+    item: PropTypes.object,
+};
+
 export default ItemListRow;

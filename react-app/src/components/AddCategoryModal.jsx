@@ -1,5 +1,4 @@
 import FormRow from "./FormRow";
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import FormRowSelect from "./FormRowSelect";
@@ -8,11 +7,10 @@ import {
     clearValues,
     createCategory,
 } from "../features/category/categorySlice";
-import { getAllCategories } from "../features/allCategories/allCategoriesSlice";
+import PropTypes from "prop-types";
 
 const AddCategoryModal = ({ toggleIsOpen }) => {
-    const { isLoading, categoryId, isEditing, name, subcategory_of } =
-        useSelector((store) => store.category);
+    const { name, subcategory_of } = useSelector((store) => store.category);
     const { categories } = useSelector((store) => store.allCategories);
     const dispatch = useDispatch();
     const handleInput = (e) => {
@@ -72,4 +70,9 @@ const AddCategoryModal = ({ toggleIsOpen }) => {
         </div>
     );
 };
+
+AddCategoryModal.propTypes = {
+    toggleIsOpen: PropTypes.func,
+};
+
 export default AddCategoryModal;

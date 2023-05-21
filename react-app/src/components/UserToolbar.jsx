@@ -11,7 +11,7 @@ const UserToolbar = () => {
     const navigate = useNavigate();
     useEffect(() => {
         dispatch(getUser());
-    }, []);
+    }, [dispatch]);
     if (isLoading) return <h2 className="text-2xl">Loading...</h2>;
     return (
         <div className="flex items-center">
@@ -21,7 +21,10 @@ const UserToolbar = () => {
                 className="w-12 rounded-full border-2 border-gray-900 mx-2 "
                 alt="profile image"
             />
-            <nav className="text-3xl relative inline-block group">
+            <nav
+                data-test="user-toolbar-menu"
+                className="text-3xl relative inline-block group"
+            >
                 <FiChevronDown />
                 <menu
                     role="menu"
@@ -43,6 +46,7 @@ const UserToolbar = () => {
                             type="button"
                             onClick={() => {
                                 dispatch(logoutUser());
+                                navigate("/");
                             }}
                             className="w-full  py-2 px-3"
                         >

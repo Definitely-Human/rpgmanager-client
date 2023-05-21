@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
+import { setSelectedItem } from "../features/itemList/itemListSlice";
+import { useDispatch } from "react-redux";
 
 const ItemListRow = ({ item }) => {
+    const dispatch = useDispatch();
     const dateOptions = {
         weekday: "short",
         month: "short",
@@ -8,7 +11,12 @@ const ItemListRow = ({ item }) => {
     };
     const dateTime = new Date(item.due_to.substring(0, item.due_to.length - 1));
     return (
-        <tr className="border-2 border-gray-900">
+        <tr
+            className="border-2 border-gray-900 cursor-pointer"
+            onClick={() =>
+                dispatch(setSelectedItem({ id: item.id, type: "task" }))
+            }
+        >
             <td className="py-1">{item.title}</td>
             <td>
                 {dateTime.toLocaleDateString("en-gb", dateOptions) +

@@ -6,6 +6,7 @@ import {
     RemindersList,
     TopBar,
 } from "../components";
+import EditorSelector from "../components/EditorSelector";
 import ItemList from "../components/ItemList";
 
 const Play = () => {
@@ -25,10 +26,11 @@ const Play = () => {
                         <RemindersList />
                     </ModuleBlock>
                 </div>
-                <div className="bg-gray-blue-900">
+                <div className="bg-gray-blue-900 grid grid-rows-[2fr_3fr]">
                     <ModuleBlock>
                         <ItemList />
                     </ModuleBlock>
+                    <EditorSelector />
                 </div>
                 <div className="bg-gray-blue-800 border-l-2 border-gray-900">
                     <ModuleBlock name="Character">

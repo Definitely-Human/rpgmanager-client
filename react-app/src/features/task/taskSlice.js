@@ -38,6 +38,7 @@ export const saveTask = createAsyncThunk(
         try {
             const resp = await customFetch.patch(`manager/tasks/${id}/`, task);
             thunkAPI.dispatch(getAllTasks());
+            thunkAPI.dispatch(getTask(id));
             return resp.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data);

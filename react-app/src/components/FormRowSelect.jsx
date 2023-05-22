@@ -34,7 +34,7 @@ const FormRowSelect = ({ labelText, name, value, handleChange, list }) => {
 
 FormRowSelect.propTypes = {
     name: PropTypes.string.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     handleChange: PropTypes.func,
     labelText: PropTypes.string,
     list: PropTypes.array,

@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
 import { setSelectedItem } from "../features/itemList/itemListSlice";
 import { useDispatch } from "react-redux";
+import {
+    convertFromAPIStringToDate,
+    shortDateOptions,
+} from "../utils/dateTime";
 
 const ItemListRow = ({ item }) => {
     const dispatch = useDispatch();
-    const dateOptions = {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-    };
-    const dateTime = new Date(item.due_to.substring(0, item.due_to.length - 1));
+
+    const dateTime = convertFromAPIStringToDate(item.due_to);
     return (
         <tr
             className="border-2 border-gray-900 cursor-pointer"
@@ -19,7 +19,7 @@ const ItemListRow = ({ item }) => {
         >
             <td className="py-1">{item.title}</td>
             <td>
-                {dateTime.toLocaleDateString("en-gb", dateOptions) +
+                {dateTime.toLocaleDateString("en-gb", shortDateOptions) +
                     " " +
                     dateTime.toLocaleTimeString("en-gb", {
                         hour: "2-digit",

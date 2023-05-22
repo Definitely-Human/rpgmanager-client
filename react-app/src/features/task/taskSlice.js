@@ -3,10 +3,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import customFetch from "../../utils/axios";
 import { getAllTasks } from "../allTasks/allTasksSlice";
-import { clearSelectedItem } from "../itemList/itemListSlice";
+import { clearSelectedItem, setSelectedItem } from "../itemList/itemListSlice";
 
 const initialState = {
     isLoading: false,
+    isEditing: false,
     id: 0,
     title: "",
     is_complete: false,
@@ -46,6 +47,23 @@ export const saveTask = createAsyncThunk(
     }
 );
 
+export const createTask = createAsyncThunk(
+    "task/createTask",
+    async ({ task }, thunkAPI) => {
+        try {
+            const resp = await customFetch.post(`manager/tasks/`, task);
+            thunkAPI.dispatch(getAllTasks());
+            thunkAPI.dispatch(getTask(resp.data.id));
+            thunkAPI.dispatch(
+                setSelectedItem({ id: resp.data.id, type: "task" })
+            );
+            return resp.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
+
 export const deleteTask = createAsyncThunk(
     "task/deleteTask",
     async (id, thunkAPI) => {
@@ -67,6 +85,9 @@ const taskSlice = createSlice({
         handleChange: (state, { payload: { name, value } }) => {
             state[name] = value;
         },
+        emptyNewTask: (state) => {
+            return initialState;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -75,7 +96,7 @@ const taskSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getTask.fulfilled, (state, { payload }) => {
-                return { ...payload, isLoading: false };
+                return { ...payload, isLoading: false, isEditing: true };
             })
             .addCase(getTask.rejected, (state, { payload }) => {
                 state.isLoading = false;
@@ -89,6 +110,18 @@ const taskSlice = createSlice({
                 state.isLoading = false;
             })
             .addCase(saveTask.rejected, (state, { payload }) => {
+                state.isLoading = false;
+                toast.error(payload);
+            })
+            // Create task
+            .addCase(createTask.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(createTask.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                toast.success("New task added.");
+            })
+            .addCase(createTask.rejected, (state, { payload }) => {
                 state.isLoading = false;
                 toast.error(payload);
             })
@@ -106,6 +139,6 @@ const taskSlice = createSlice({
     },
 });
 
-export const { handleChange } = taskSlice.actions;
+export const { handleChange, emptyNewTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

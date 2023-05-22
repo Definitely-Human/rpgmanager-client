@@ -13,6 +13,7 @@ import FormRowSelect from "./FormRowSelect";
 import CategoryItem from "./CategoryItem";
 import ItemList from "./ItemList";
 import ItemListRow from "./ItemListRow";
+import RewardWindow from "./RewardWindow";
 
 export {
     CategoriesList,
@@ -30,4 +31,5 @@ export {
     CategoryItem,
     ItemList,
     ItemListRow,
+    RewardWindow,
 };

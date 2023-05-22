@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTasks } from "../features/allTasks/allTasksSlice";
 import { useEffect } from "react";
+import { emptyNewTask } from "../features/task/taskSlice";
 import ItemListRow from "./ItemListRow";
+import { setSelectedItem } from "../features/itemList/itemListSlice";
 
 const ItemList = () => {
     const { isLoading, tasks } = useSelector((store) => store.allTasks);
@@ -41,6 +43,16 @@ const ItemList = () => {
                     })}
                 </tbody>
             </table>
+            <button
+                type="button"
+                className="py-2 px-10 border-secondary border-4 rounded-md mt-3 hover:bg-gray-blue-800"
+                onClick={() => {
+                    dispatch(emptyNewTask());
+                    dispatch(setSelectedItem({ id: 0, type: "task" }));
+                }}
+            >
+                Add Task
+            </button>
         </div>
     );
 };

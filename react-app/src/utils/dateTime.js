@@ -7,3 +7,14 @@ export const shortDateOptions = {
     month: "short",
     day: "numeric",
 };
+
+export const convertAPIDateToString = (str) => {
+    const dateTime = convertFromAPIStringToDate(str);
+    return `${dateTime.toLocaleDateString(
+        "en-gb",
+        shortDateOptions
+    )} ${dateTime.toLocaleTimeString("en-gb", {
+        hour: "2-digit",
+        minute: "2-digit",
+    })}`;
+};

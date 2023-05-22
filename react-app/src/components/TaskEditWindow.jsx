@@ -7,11 +7,8 @@ import {
     saveTask,
 } from "../features/task/taskSlice";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import { BsTrashFill } from "react-icons/bs";
-import {
-    convertFromAPIStringToDate,
-    shortDateOptions,
-} from "../utils/dateTime";
+import { BsTrashFill, BsCheckAll, BsArrowRepeat } from "react-icons/bs";
+import { convertAPIDateToString } from "../utils/dateTime";
 import FormRowSelect from "./FormRowSelect";
 
 const TaskEditWindow = () => {
@@ -57,11 +54,44 @@ const TaskEditWindow = () => {
             })
         );
     };
-    const dateTime = convertFromAPIStringToDate(updated_at);
+    const toggleComplete = () => {
+        dispatch(
+            saveTask({
+                id: selectedItemId,
+                task: { is_complete: !is_complete },
+            })
+        );
+    };
     const { categories } = useSelector((store) => store.allCategories);
     if (isLoading) return <h2 className="text-2xl">Loading...</h2>;
+    if (is_complete)
+        return (
+            <div className="p-3 overflow-auto min-h-0 ">
+                <div className="flex justify-between">
+                    <h3 className="text-primary text-3xl ">{title}</h3>
+                    <button
+                        type="button"
+                        className="  hover:text-error text-2xl"
+                        onClick={() => dispatch(deleteTask(selectedItemId))}
+                    >
+                        <BsTrashFill />
+                    </button>
+                </div>
+                <p className="w-full my-2 whitespace-pre-wrap">{content}</p>
+                <div>
+                    <span className="text-primary">Completed at: </span>
+                    {completion_time}
+                </div>
+                <button
+                    onClick={toggleComplete}
+                    className="py-2 px-16 mx-auto block border-error border-4 rounded-md mt-3"
+                >
+                    Not complete
+                </button>
+            </div>
+        );
     return (
-        <div className="p-3">
+        <div className="p-3  overflow-auto min-h-0 ">
             <form onSubmit={handleSave}>
                 <div className="flex justify-between">
                     <input
@@ -72,7 +102,7 @@ const TaskEditWindow = () => {
                         className="h-10 bg-transparent w-full text-primary px-3 text-2xl focus:outline-none"
                         maxLength="255"
                     />
-                    <div className="flex justify-between w-20 text-2xl">
+                    <div className="flex justify-between w-24 text-2xl">
                         <button
                             type="button"
                             className="w-full hover:text-secondary"
@@ -86,6 +116,13 @@ const TaskEditWindow = () => {
                             onClick={() => dispatch(deleteTask(selectedItemId))}
                         >
                             <BsTrashFill />
+                        </button>
+                        <button
+                            type="button"
+                            className="w-full hover:text-error"
+                            onClick={() => dispatch(deleteTask(selectedItemId))}
+                        >
+                            <BsCheckAll />
                         </button>
                     </div>
                 </div>
@@ -133,21 +170,15 @@ const TaskEditWindow = () => {
                     >
                         Save
                     </button>
-                    <button className="py-2 px-16 border-primary border-4 rounded-md mt-3">
+                    <button
+                        onClick={toggleComplete}
+                        className="py-2 px-16 border-primary border-4 rounded-md mt-3"
+                    >
                         Complete
                     </button>
                     <span className="text-gray-400 font-normal">
                         Last updated: <br />
-                        {" " +
-                            dateTime.toLocaleDateString(
-                                "en-gb",
-                                shortDateOptions
-                            ) +
-                            " " +
-                            dateTime.toLocaleTimeString("en-gb", {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            })}
+                        {convertAPIDateToString(updated_at)}
                     </span>
                 </div>
             </form>

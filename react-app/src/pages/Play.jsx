@@ -26,7 +26,7 @@ const Play = () => {
                         <RemindersList />
                     </ModuleBlock>
                 </div>
-                <div className="bg-gray-blue-900 grid grid-rows-[2fr_3fr]">
+                <div className="bg-gray-blue-900 grid grid-rows-[2fr_3fr] min-h-0 min-w-0">
                     <ModuleBlock>
                         <ItemList />
                     </ModuleBlock>

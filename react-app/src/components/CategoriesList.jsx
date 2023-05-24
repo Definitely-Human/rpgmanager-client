@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { AddCategoryModal, CategoryItem } from "../components";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCategories } from "../features/allCategories/allCategoriesSlice";
+import {
+    getAllCategories,
+    setSelectedCategory,
+} from "../features/allCategories/allCategoriesSlice";
 import { HiOutlineFolderPlus } from "react-icons/hi2";
 import { SlRefresh } from "react-icons/sl";
+import { TiSortAlphabetically } from "react-icons/ti";
 
 const CategoriesList = () => {
     const { categories, isLoading } = useSelector(
@@ -27,6 +31,12 @@ const CategoriesList = () => {
         <>
             {isOpen && <AddCategoryModal toggleIsOpen={toggleIsOpen} />}
             <div className="flex justify-end">
+                <button
+                    className="text-2xl px-3 py-1 bg-gray-blue-900 border-2 border-gray-900 rounded-lg "
+                    onClick={() => dispatch(setSelectedCategory({ id: null }))}
+                >
+                    <TiSortAlphabetically />
+                </button>
                 <button
                     className="text-2xl px-3 py-1 bg-gray-blue-900 border-2 border-gray-900 rounded-lg "
                     onClick={toggleIsOpen}

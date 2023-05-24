@@ -7,13 +7,14 @@ import { setSelectedItem } from "../features/itemList/itemListSlice";
 
 const ItemList = () => {
     const { isLoading, tasks } = useSelector((store) => store.allTasks);
+    const { selectedCategory } = useSelector((store) => store.allCategories);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getAllTasks());
     }, [dispatch]);
     if (isLoading) {
-        return <h3 className="text-xl">Loading...</h3>;
+        return <h3 className="text-3xl text-center">Loading...</h3>;
     }
 
     return (
@@ -38,9 +39,19 @@ const ItemList = () => {
                     </tr>
                 </thead>
                 <tbody className="text-center font-normal">
-                    {tasks.map((task) => {
-                        return <ItemListRow key={task.id} item={task} />;
-                    })}
+                    {selectedCategory
+                        ? tasks
+                              .filter((task) => {
+                                  return task.category === selectedCategory;
+                              })
+                              .map((task) => {
+                                  return (
+                                      <ItemListRow key={task.id} item={task} />
+                                  );
+                              })
+                        : tasks.map((task) => {
+                              return <ItemListRow key={task.id} item={task} />;
+                          })}
                 </tbody>
             </table>
             <button

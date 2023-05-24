@@ -4,6 +4,7 @@ import customFetch from "../../utils/axios";
 
 const initialState = {
     isLoading: false,
+    selectedCategory: null,
     categories: [],
 };
 
@@ -23,6 +24,11 @@ export const getAllCategories = createAsyncThunk(
 const allCategoriesSlice = createSlice({
     name: "allCategories",
     initialState,
+    reducers: {
+        setSelectedCategory: (state, { payload }) => {
+            state.selectedCategory = payload.id;
+        },
+    },
     extraReducers: (builder) => {
         builder
             // Get all
@@ -39,5 +45,7 @@ const allCategoriesSlice = createSlice({
             });
     },
 });
+
+export const { setSelectedCategory } = allCategoriesSlice.actions;
 
 export default allCategoriesSlice.reducer;

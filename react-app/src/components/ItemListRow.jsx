@@ -2,15 +2,17 @@ import PropTypes from "prop-types";
 import { setSelectedItem } from "../features/itemList/itemListSlice";
 import { useDispatch } from "react-redux";
 import { convertAPIDateToString } from "../utils/dateTime";
+import { getTask } from "../features/task/taskSlice";
 
 const ItemListRow = ({ item }) => {
     const dispatch = useDispatch();
     return (
         <tr
             className="border-2 border-gray-900 cursor-pointer hover:bg-gray-blue-800"
-            onClick={() =>
-                dispatch(setSelectedItem({ id: item.id, type: "task" }))
-            }
+            onClick={() => {
+                dispatch(setSelectedItem({ id: item.id, type: "task" }));
+                dispatch(getTask(item.id));
+            }}
         >
             <td className="py-1">{item.title}</td>
             <td>

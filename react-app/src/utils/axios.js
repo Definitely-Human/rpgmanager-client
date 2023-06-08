@@ -2,7 +2,7 @@ import axios from "axios";
 import { getUserFromLocalStorage } from "./localStorage";
 
 const customFetch = axios.create({
-    baseURL: "http://localhost:8000/api",
+    baseURL: `http://${import.meta.env.VITE_API_URL}/api`,
     headers: {
         Authorization: `Token ${getUserFromLocalStorage()?.token}`,
     },

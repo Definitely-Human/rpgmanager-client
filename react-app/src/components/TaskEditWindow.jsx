@@ -100,7 +100,7 @@ const TaskEditWindow = () => {
             </div>
         );
     return (
-        <div className="p-3  overflow-auto min-h-0 ">
+        <div className="px-3 pt-3  overflow-auto min-h-0 ">
             <form onSubmit={handleSave}>
                 <div className="flex justify-between">
                     <input
@@ -142,7 +142,7 @@ const TaskEditWindow = () => {
                     onChange={handleInput}
                     className="w-full min-h-[100px] font-normal bg-transparent focus:outline-none px-3 border-b-2 border-gray-blue-950 resize-none"
                     maxLength="4096"
-                    rows="9"
+                    rows="7"
                 ></textarea>
                 <div className="flex justify-between">
                     <span>

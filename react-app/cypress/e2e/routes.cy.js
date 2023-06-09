@@ -1,4 +1,4 @@
-import { OWN_URL } from "../../src/utils/urls";
+import { OWN_URL } from "../../src/utils/testingUrls";
 
 describe("User redirected to home when", () => {
     it("goes to protected routes", () => {

@@ -1,4 +1,4 @@
-import { API_URL, OWN_URL } from "../../src/utils/urls";
+import { API_URL, OWN_URL } from "../../src/utils/testingUrls";
 
 describe("Topbar", () => {
     it("shows user toolbar when button is hovered", () => {

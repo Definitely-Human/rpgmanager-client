@@ -2,7 +2,7 @@
 
 This is a fully functional React.js + Vite web frontend for RpgManager, a self-management app that combines game and organization. The purpose of this project is to create a single application that combines self-management tools with gaming-like features to provide a comfortable and rewarding experience in managing your life.
 
-See RPGManager API <a href="https://github.com/Definitely-Human/rpgmanager-api">here</a>.
+See RPG Manager API <a href="https://github.com/Definitely-Human/rpgmanager-api">here</a>.
 
 ## Table of Contents
 
@@ -42,6 +42,13 @@ This design is in early stages and will be improved upon.
 
 Here is the list of all technologies used in this project: HTML, CSS, TailwindCSS, JavaScript, React, Vite, React Testing Library, Cypress, ESLint, Redux Toolkit, Axios, Docker, Git, Github CI.
 
+Some of the features that already work:
+
+-   Responsive web interface made with React and <b>TailwindCSS</b>
+-   Multi-paged app layout with protected routes using <b>React Router</b>.
+-   Multiple unit tests with <b>React Testing Library</b> and E2E tests with <b>Cypress</b>.
+-   Can perform CRUD operations on Tasks and Categories using UI.
+
 ## Installation
 
 1. Clone this project.
@@ -50,7 +57,7 @@ Here is the list of all technologies used in this project: HTML, CSS, TailwindCS
 
 ## Known Issues
 
-None, for now.
+-   Error are not being displayed correctly.
 
 ## Contributing
 

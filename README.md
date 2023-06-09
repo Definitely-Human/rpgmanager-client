@@ -30,9 +30,17 @@ While combining it with gaming-like features such as:
 -   Coins
 -   Reward items
 
+### Design
+
+The design for the web interface was made by me in Figma:
+
+![alt text](https://i.imgur.com/LHJJg3f.png)
+
+This design is in early stages and will be improved upon.
+
 ## Technical Details
 
-in progress...
+Here is the list of all technologies used in this project: HTML, CSS, TailwindCSS, JavaScript, React, Vite, React Testing Library, Cypress, ESLint, Redux Toolkit, Axios, Docker, Git, Github CI.
 
 ## Installation
 

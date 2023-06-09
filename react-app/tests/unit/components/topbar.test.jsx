@@ -27,7 +27,9 @@ describe("TopBar", () => {
     });
 
     it("displays username when loaded", async () => {
-        renderWithProviders(<TopBar />, { store: setupStoreUser() });
+        renderWithProviders(<TopBar />, {
+            store: setupStoreUser(),
+        });
 
         const userName = await screen.findByRole("heading", {
             name: /hello, test/i,

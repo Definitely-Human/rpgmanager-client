@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import userSlice from "../src/features/user/userSlice";
 
 export function setupStoreUser(preloadedState = {}) {
-    console.log("setup store user");
     return configureStore({
         reducer: { user: userSlice },
         preloadedState,
